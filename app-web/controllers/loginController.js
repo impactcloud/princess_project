@@ -17,8 +17,12 @@ module.exports.main = (req, res, next) => {
 	res.render('pages/login', { title: "Box Platform", env: loginEnv });
 }
 
+module.exports.logout = (req, res, next) => {
+	req.logout();
+	res.redirect('/login');
+}
+
 module.exports.callback = asyncFunc(function* (req, res, next) {
-	console.log('callbackk!');
 	let boxAppUserId = IdentityProviderUtilities.checkForExistingBoxAppUserId(req.user);
 	if (!boxAppUserId) {
 		let appUser = yield Box.createAppUser(req.user.displayName);

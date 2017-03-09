@@ -12,7 +12,7 @@ gulp.task('lint', () => {
 
 gulp.task('develop', ['lint'], () => {
 	nodemon({
-		script: 'app.js',
+		script: 'bin/www',
 		ext: 'js ejs coffee',
 		stdout: true
 	});

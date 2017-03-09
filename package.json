@@ -7,7 +7,7 @@
   "scripts": {
     "prestart": "npm run test",
     "dev-start": "./node_modules/.bin/gulp develop",
-    "start": "node app.js"
+    "start": "node ./bin/www"
   },
   "author": "Box oss@box.com",
   "license": "Apache-2.0",

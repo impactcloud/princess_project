@@ -18,6 +18,7 @@ module.exports.main = asyncFunc(function* (req, res, next) {
 	let foldersAndFiles = splitFilesAndFolders(folder);
 	let accessToken = yield BoxService.generateUserToken(boxAppUserId);
 	req.user.accessToken = accessToken.accessToken;
+
 	res.render('pages/user', {
 		user: req.user,
 		title: "Box Skeleton App",

@@ -1,42 +1,99 @@
 <% include ../partials/common/header %>
-  <div id="box-header" class="container-fluid">
-    <div class="jumbotron">
-      <h1>
-      <%= title %>
-      </h1>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-1">
-            <img class="img-responsive" src="<%= user.picture %>" />
-          </div>
-          <div class="col-md-11">
-            <h2> Welcome
-            <%= user.nickname %>! 
-            </h2>
-          </div>
-        </div>
-      </div>
+
+  <div class="callout large">
+    <div class="row column text-center">
+      <h1>Welcome to Industry Portal</h1>
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+      <a href="#" class="button large">Learn More</a>
+      <a href="#" class="button large hollow">Learn Less</a>
     </div>
   </div>
-  
-  <div id="box-upload" class="container-fluid">
-  </div>
-  <div id="box-explorer" class="container-fluid">
-    <hr>
-    <div class="row">
-      <%- include ../partials/box/folder-path %>
-      <hr>
+
+  <div class="row">
+    <div class="medium-6 columns medium-push-6">
+      <img class="thumbnail" src="http://placehold.it/750x350">
     </div>
-    <hr>
-    <div id="files-folders" class="row">
+    <div class="medium-6 columns medium-pull-6">
+      <h2>Our Portal, our selves.</h2>
+      <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <%- include ../partials/box/folder-path %>
+    <div class="medium-4 columns">
+      <h3>Folders</h3>
       <%- include ../partials/box/folders %>
+    </div>
+    <div class="medium-4 columns">
+      <h3>Files</h3>
       <%- include ../partials/box/files %>
     </div>
+    <div class="medium-4 columns">
+      <h3>Marketing</h3>
+      <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna.</p>
+    </div>
   </div>
+
   <hr>
-  
+
+  <div class="row column">
+    <ul class="vertical medium-horizontal menu expanded text-center">
+      <li><a href="#"><div class="stat">28</div><span>Websites</span></a></li>
+      <li><a href="#"><div class="stat">43</div><span>Apps</span></a></li>
+      <li><a href="#"><div class="stat">95</div><span>Ads</span></a></li>
+      <li><a href="#"><div class="stat">59</div><span>Cakes</span></a></li>
+      <li><a href="#"><div class="stat">18</div><span>Logos</span></a></li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <div class="row column">
+    <h3>Our Recent Work</h3>
+  </div>
+
+  <div class="row medium-up-3 large-up-4">
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/550x550">
+    </div>
+  </div>
+
   <script type="text/javascript">
-    var accessToken = "<%= user.accessToken %>"; 
+    var accessToken = "<%= user.accessToken %>";
 
     var form = document.getElementById('file-form');
     var fileSelect = document.getElementById('file-select');
@@ -73,7 +130,7 @@
     });
     }
 
-    
+
   </script>
 
 <% include ../partials/common/footer %>

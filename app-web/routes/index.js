@@ -11,6 +11,7 @@ let filesCtrl = require('../controllers/filesController');
 
 router.get('/', indexCtrl.main);
 router.get('/login', loginCtrl.main);
+router.get('/logout', loginCtrl.logout);
 router.get('/callback', passport.authenticate('auth0', { failureRedirect: '/' }), loginCtrl.callback);
 router.get('/user/:id?', ensureLoggedIn, usersCtrl.main);
 router.post('/user/:id?/folder', ensureLoggedIn, usersCtrl.addFolder);
