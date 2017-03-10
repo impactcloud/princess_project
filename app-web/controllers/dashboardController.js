@@ -19,7 +19,7 @@ module.exports.main = asyncFunc(function* (req, res, next) {
 	let accessToken = yield BoxService.generateUserToken(boxAppUserId);
 	req.user.accessToken = accessToken.accessToken;
 
-	res.render('pages/user', {
+	res.render('pages/dashboard', {
 		user: req.user,
 		title: "Box Skeleton App",
 		currentFolder: rootFolder,
@@ -33,21 +33,21 @@ module.exports.main = asyncFunc(function* (req, res, next) {
 module.exports.addFolder = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
 	if (!boxAppUserId) {
-		res.redirect('/login');
+		res.redirect('/home');
 	}
 	let appUserClient = yield BoxService.getUserClient(boxAppUserId);
 	let folderName = req.body.folderName;
 	let rootFolder = req.params.id || '0';
 	try {
 		yield appUserClient.folders.createAsync(rootFolder, folderName);
-		res.redirect(`/user/${rootFolder}`);
+		res.redirect(`/dashboard/${rootFolder}`);
 	} catch (e) {
 		if (e.response.body) {
 			res.render('pages/error', {
 				title: e.response.body.code,
 				message: e.response.body.message,
 				error: e.response.body,
-				returnUrl: `/user/${rootFolder}`
+				returnUrl: `/dashboard/${rootFolder}`
 			});
 		}
 		res.render('pages/error', {

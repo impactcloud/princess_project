@@ -10,13 +10,17 @@ let BoxService = require('../../box-service/boxClientService');
 module.exports.main = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
 	if (!boxAppUserId) {
-		res.redirect('/login');
+		res.redirect('/home');
 	}
 	let fileId = req.params.id;
 	let appUserClient = yield BoxService.getUserClient(boxAppUserId);
 	let file = yield appUserClient.files.getAsync(fileId, null);
+	let tokens = yield BoxService.generateUserToken(boxAppUserId);
+	req.user.accessToken = tokens.accessToken;
+
 	res.render('pages/box/file-detail', {
 		file,
+		user: req.user,
 		domain: AppConfig.domain
 	})
 });
@@ -24,7 +28,7 @@ module.exports.main = asyncFunc(function* (req, res, next) {
 module.exports.thumbnail = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
 	if (!boxAppUserId) {
-		res.redirect('/login');
+		res.redirect('/home');
 	}
 	let fileId = req.params.id;
 	let appUserClient = yield BoxService.getUserClient(boxAppUserId);
@@ -52,7 +56,7 @@ module.exports.thumbnail = asyncFunc(function* (req, res, next) {
 module.exports.preview = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
 	if (!boxAppUserId) {
-		res.redirect('/login');
+		res.redirect('/home');
 	}
 	let fileId = req.params.id;
 	let appUserClient = yield BoxService.getUserClient(boxAppUserId);

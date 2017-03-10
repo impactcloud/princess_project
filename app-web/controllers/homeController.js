@@ -7,19 +7,19 @@ const Auth0Config = config.get('Auth0Config');
 let Box = require('../../box-service/boxClientService');
 let IdentityProvider = require('../../identity-service/identityProvider');
 let IdentityProviderUtilities = require('../../identity-service/identityProviderUtilities');
-let loginEnv = {
+let homeEnv = {
 	AUTH0_CLIENT_ID: Auth0Config.clientId,
 	AUTH0_DOMAIN: Auth0Config.domain,
 	AUTH0_CALLBACK_URL: Auth0Config.callbackUrl || 'http://localhost:3000/callback'
 }
 
 module.exports.main = (req, res, next) => {
-	res.render('pages/login', { title: "Box Platform", env: loginEnv });
+	res.render('pages/home', { title: "Box Platform", env: homeEnv });
 }
 
 module.exports.logout = (req, res, next) => {
 	req.logout();
-	res.redirect('/login');
+	res.redirect('/home');
 }
 
 module.exports.callback = asyncFunc(function* (req, res, next) {
@@ -30,5 +30,5 @@ module.exports.callback = asyncFunc(function* (req, res, next) {
 		req.user.app_metadata = updatedProfile.app_metadata;
 		boxAppUserId = appUser.id;
 	}
-	res.redirect('/user');
+	res.redirect('/dashboard');
 })

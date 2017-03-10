@@ -5,12 +5,12 @@
     <% } %>
     <ul id="folderGroup" class="medium-12 columns">
     <% folders.forEach(function(folder) { %>
-      <li class=""><a href="/user/<%= folder.id %>"><%= folder.name %></a></li>
+      <li class=""><a href="/dashboard/<%= folder.id %>"><%= folder.name %></a></li>
     <% }); %>
     </ul>
   </div>
   <hr>
-  <form method="post" action="/user/<%= currentFolder %>/folder">
+  <form method="post" action="/dashboard/<%= currentFolder %>/folder">
     <div class="">
     <label for="folderName">Folder Name:</label>
 
