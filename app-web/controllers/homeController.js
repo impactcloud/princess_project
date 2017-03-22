@@ -14,7 +14,7 @@ let homeEnv = {
 }
 
 module.exports.main = (req, res, next) => {
-	res.render('pages/home', { title: "Box Platform", env: homeEnv });
+	res.render('pages/home', { title: "Industry Portal", env: homeEnv });
 }
 
 module.exports.logout = (req, res, next) => {
@@ -22,6 +22,9 @@ module.exports.logout = (req, res, next) => {
 	res.redirect('/home');
 }
 
+/**
+ * Handle auth callback
+**/
 module.exports.callback = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = IdentityProviderUtilities.checkForExistingBoxAppUserId(req.user);
 	if (!boxAppUserId) {

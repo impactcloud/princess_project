@@ -7,6 +7,10 @@ const BoxOptions = config.get('BoxOptions');
 const AppConfig = config.get('AppConfig');
 let BoxService = require('../../box-service/boxClientService');
 
+
+/**
+ * Main files page
+**/
 module.exports.main = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
 	if (!boxAppUserId) {
@@ -25,6 +29,9 @@ module.exports.main = asyncFunc(function* (req, res, next) {
 	})
 });
 
+/**
+ * Fetch thumbnail endpoint
+**/
 module.exports.thumbnail = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
 	if (!boxAppUserId) {
@@ -53,6 +60,9 @@ module.exports.thumbnail = asyncFunc(function* (req, res, next) {
 	}
 });
 
+/**
+ * Fetch file preview endpoint 
+**/
 module.exports.preview = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
 	if (!boxAppUserId) {

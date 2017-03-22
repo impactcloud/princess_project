@@ -6,6 +6,9 @@ const BoxOptions = config.get('BoxOptions');
 const AppConfig = config.get('AppConfig');
 let BoxService = require('../../box-service/boxClientService');
 
+/**
+ * Main dashboard
+**/
 module.exports.main = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
 	if (!boxAppUserId) {
@@ -21,7 +24,7 @@ module.exports.main = asyncFunc(function* (req, res, next) {
 
 	res.render('pages/dashboard', {
 		user: req.user,
-		title: "Box Skeleton App",
+		title: "Industry Portal",
 		currentFolder: rootFolder,
 		folders: foldersAndFiles.folders,
 		files: foldersAndFiles.files,
@@ -30,6 +33,9 @@ module.exports.main = asyncFunc(function* (req, res, next) {
 	});
 });
 
+/**
+ * Create new folder endpoint
+**/
 module.exports.addFolder = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
 	if (!boxAppUserId) {
@@ -58,6 +64,9 @@ module.exports.addFolder = asyncFunc(function* (req, res, next) {
 	}
 });
 
+/**
+ * Fetch folder path from folder object. Return folder path.
+**/
 function trackFolderPath(folder) {
 	let path = [];
 	let sequence;
@@ -78,6 +87,9 @@ function trackFolderPath(folder) {
 	return path;
 }
 
+/**
+ * Split files and folders and return.
+**/
 function splitFilesAndFolders(folder) {
 	let folders = [];
 	let files = [];

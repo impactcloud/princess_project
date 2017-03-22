@@ -3,11 +3,32 @@
 
   <div class="callout large">
     <div class="row column text-center">
-      <h1>Industry Home Page</h1>
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
-      <a href="#" class="button large">Learn More</a>
-      <a href="#" class="button large hollow">Learn Less</a>
+
+      <div class="medium-7 large-9 columns">
+        <h1>Industry Home Page</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+        <a href="#" class="button large">Learn More</a>
+        <a href="#" class="button large hollow">Learn Less</a>
+      </div>
+
+      <div class="medium-5 large-3 columns">
+        <div class="callout secondary">
+          <h4>Log In</h4>
+          <form>
+            <div class="row">
+              <div class="small-12 columns">
+                <label id="err" class="red"></label>
+                <input id="login-username" type="text" placeholder="user@example.com">
+                <input id="login-password" type="password" placeholder="password">
+                <button id="login-submit" type="submit" class="button">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
     </div>
+
   </div>
 
   <div class="row">
@@ -21,15 +42,50 @@
   </div>
 
 <script type="text/javascript">
-    var lock = new Auth0Lock('<%= env.AUTH0_CLIENT_ID %>', '<%= env.AUTH0_DOMAIN %>', {
-        auth: {
-            redirectUrl: '<%= env.AUTH0_CALLBACK_URL %>',
-            responseType: 'code',
-            params: {
-                scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
-            }
-        }
+
+  var webAuth = new auth0.WebAuth({
+    domain:       '<%= env.AUTH0_DOMAIN %>',
+    clientID:     '<%= env.AUTH0_CLIENT_ID %>',
+    redirectUrl: '<%= env.AUTH0_CALLBACK_URL %>',
+    responseType: 'code'
+  });
+
+
+  $('#login-submit').click(function (e) {
+
+    e.preventDefault();
+
+    // attempt first login
+    webAuth.redirect.loginWithCredentials({
+      connection: 'Username-Password-Authentication',
+      username: $('#login-username').val(),
+      password: $('#login-password').val(),
+      scope: 'openid'
+
+    // either invalid password or login does not exist
+    }, function (err) {
+
+      // attempt to create new user with credentials
+      webAuth.signup({
+        connection: 'Username-Password-Authentication',
+        email: $('#login-username').val(),
+        password: $('#login-password').val(),
+      }, function (err) {
+
+        // re-attempt login after signup
+        webAuth.redirect.loginWithCredentials({
+          connection: 'Username-Password-Authentication',
+          username: $('#login-username').val(),
+          password: $('#login-password').val(),
+          scope: 'openid'
+        }, function(err) {
+          $('#err').html(err.description);
+        });
+      });
+
     });
+  });
+
 </script>
 
 <% include ../partials/common/footer %>
