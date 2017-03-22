@@ -1,4 +1,4 @@
-# box-node-express-skeleton-app
+# Box Industries Skeleton
 
 ## Prerequisites
 [Node.js](https://nodejs.org/en/)
@@ -51,7 +51,7 @@
     * Your application is now authorized to access your Box account
 
 ##### Step 4. Add environment variables to the Node Express App
-1. Navigate to `box-node-express-skeleton-app` > `config.js`.
+1. Navigate to `box-industries-skeleton` > `config.js`.
 2. Add the environment variables from your Box application to the `config.js` file:
     * You can find each required value within Box's Developer Console and your Enterprise. For more information, you can reference our Quickstart guide:
     * [Box Platform Quickstart](https://docs.box.com/docs/getting-started-box-platform)
