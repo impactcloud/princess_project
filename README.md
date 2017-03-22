@@ -51,7 +51,7 @@
     * Your application is now authorized to access your Box account
 
 ##### Step 4. Add environment variables to the Node Express App
-1. Navigate to `box-industries-skeleton` > `config` > `local.js` (create if it does not exist).
+1. Navigate to `box-industries-skeleton` > `config` > `local.js` (rename default.example.js to local.js).
 2. Add the environment variables from your Box application to the `config.js` file:
     * You can find each required value within Box's Developer Console and your Enterprise. For more information, you can reference our Quickstart guide:
     * [Box Platform Quickstart](https://docs.box.com/docs/getting-started-box-platform)
@@ -92,7 +92,7 @@ For that reason, we've included the needed code and setup for an identity servic
     * update:users_app_metadata
 
 #### Step 3. Add Auth0 configuration values to the Node Express application.
-1. Navigate to `box-node-express-skeleton-app` > `config.js`
+1. Navigate to `box-node-express-skeleton-app` > `config` > `local.js`
 2. In the `config.js` file, replace these values with those from your Auth0 client:
     * Under `module.exports.Auth0Config`
     * `clientId`
@@ -117,12 +117,6 @@ Run `npm install` to download all needed dependencies for this project. There ar
 2. If you want to make changes and have the server restart automatically, use `npm run dev-start`.
 
 Once the server is running, navigate to [http://localhost:3000](http://localhost:3000). 
-
-Support
--------
-
-Need to contact us directly? You can post to the
-[Box Developer Forum](https://community.box.com/t5/Developer-Forum/bd-p/DeveloperForum).
 
 Copyright and License
 ---------------------
