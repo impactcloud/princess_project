@@ -15,10 +15,12 @@ class CacheService {
 	}
 
 	getCacheClient() {
+		console.log('created client');
 		return this.client;
 	}
 
 	retrieveKey(key) {
+		console.log(key)
 		return this.client.get(key);
 	}
 
@@ -27,6 +29,7 @@ class CacheService {
 	}
 
 	setKeyWithExpiration(key, value, expiration) {
+		console.log('set key: ' + key);
 		return this.client.set(key, value, 'ex', expiration);
 	}
 
