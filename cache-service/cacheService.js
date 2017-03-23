@@ -20,7 +20,7 @@ class CacheService {
 	}
 
 	retrieveKey(key) {
-		console.log(key)
+		console.log('return key: ' + key);
 		return this.client.get(key);
 	}
 
