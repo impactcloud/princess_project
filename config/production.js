@@ -24,7 +24,7 @@ module.exports = {
 		domain: "mmitchell.auth0.com",
 		clientId: "h2LT04wLosmEUekk1mK6AIy65kkxFBHV",
 		clientSecret: "rMHcRnh9x6AtwdCkg1sn2Z94sU0P6QJazQTlSd7X47UOf-b1xNbhRZ84muqJFQAa",
-		callbackUrl: "https://box-industries-skeleton/callback",
+		callbackUrl: "https://box-industries-skeleton.herokuapp.com/callback",
 		sessionSecret: "securepassword",
 		inMemoryStoreSize: "100"
 	},
@@ -36,6 +36,6 @@ module.exports = {
 	},
 
 	AppConfig: {
-		domain: "https://box-industries-skeleton"
+		domain: "https://box-industries-skeleton.herokuapp.com"
 	}
 }
