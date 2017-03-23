@@ -1,8 +1,6 @@
 'use strict';
 const _ = require('lodash');
-const path = require('path');
-const autoPageWithOffset = require(path.resolve(__dirname,'./autoPage.js')).autoPageWithOffset;
-// const autoPageWithOffset = require('autoPage').autoPageWithOffset;
+const autoPageWithOffset = require('./autopage').autoPageWithOffset;
 
 var fileCollection = [];
 var folderCollection = [];
