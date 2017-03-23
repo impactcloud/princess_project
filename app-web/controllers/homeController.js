@@ -13,10 +13,17 @@ let homeEnv = {
 	AUTH0_CALLBACK_URL: Auth0Config.callbackUrl || 'http://localhost:3000/callback'
 }
 
+/**
+ * Render home page
+**/
 module.exports.main = (req, res, next) => {
 	res.render('pages/home', { title: "Industry Portal", env: homeEnv });
 }
 
+
+/**
+ * Logout, kill user session
+**/
 module.exports.logout = (req, res, next) => {
 	req.logout();
 	res.redirect('/home');

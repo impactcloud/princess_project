@@ -40,7 +40,7 @@ module.exports.thumbnail = asyncFunc(function* (req, res, next) {
 	let fileId = req.params.id;
 	let appUserClient = yield BoxService.getUserClient(boxAppUserId);
 	try {
-		let data = yield appUserClient.files.getThumbnailAsync(fileId, { min_height: "256", min_width: "256" });
+		let data = yield appUserClient.files.getThumbnailAsync(fileId, { max_height: "32", max_width: "32" });
 		if (data.file) {
 			// We got the thumbnail file, so send the image bytes back
 			res.send(data.file);
@@ -61,7 +61,7 @@ module.exports.thumbnail = asyncFunc(function* (req, res, next) {
 });
 
 /**
- * Fetch file preview endpoint 
+ * Fetch file preview endpoint
 **/
 module.exports.preview = asyncFunc(function* (req, res, next) {
 	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
