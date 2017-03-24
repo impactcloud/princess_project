@@ -6,3 +6,12 @@
 .red {
   color: #f00;
 }
+
+.image {
+  background-image: url('../img/temp.jpg');
+}
+
+.dark-background {
+  background-color: #333 !important;
+  color: #fff !important;
+}

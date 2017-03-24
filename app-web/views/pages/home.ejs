@@ -1,10 +1,10 @@
 <% include ../partials/common/header %>
 
 
-  <div class="callout large">
-    <div class="row column text-center">
+  <div class="callout large home-banner">
+    <div class="row column">
 
-      <div class="medium-7 large-9 columns">
+      <div class="medium-7 large-9 columns text-center">
         <h1>Industry Home Page</h1>
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
         <a href="#" class="button large">Learn More</a>
@@ -13,13 +13,17 @@
 
       <div class="medium-5 large-3 columns">
         <div class="callout secondary">
-          <h4>Log In</h4>
+          <h4 class="text-center">Log In</h4>
           <form>
             <div class="row">
               <div class="small-12 columns">
                 <label id="err" class="red"></label>
-                <input id="login-username" type="text" placeholder="user@example.com">
-                <input id="login-password" type="password" placeholder="password">
+                <label>Username
+                  <input id="login-username" type="text" placeholder="user@example.com">
+                </label>
+                <label>Password
+                  <input id="login-password" type="password" placeholder="password">
+                </label>
                 <button id="login-submit" type="submit" class="button">Login</button>
               </div>
             </div>
@@ -33,7 +37,7 @@
 
   <div class="row">
     <div class="medium-6 columns medium-push-6">
-      <img class="thumbnail" src="https://placehold.it/750x350">
+      <img class="thumbnail" src="/img/temp.jpg">
     </div>
     <div class="medium-6 columns medium-pull-6">
       <h2>About Industry Use Case</h2>

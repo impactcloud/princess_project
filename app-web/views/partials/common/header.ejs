@@ -23,19 +23,19 @@
 <body>
 
   <!-- Start Top Bar -->
-  <div class="top-bar">
+  <div class="top-bar dark-background">
     <div class="top-bar-left">
-      <ul class="menu">
+      <ul class="dark-background menu">
         <li class="menu-text">Industry Portal</li>
-        <li><a href="#">One</a></li>
+        <li role="menuitem"><a href="#">One</a></li>
         <li><a href="#">Two</a></li>
         <li><a href="#">Three</a></li>
       </ul>
     </div>
     <div class="top-bar-right">
       <% if(locals.user) { %>
-        <ul class="menu">
-          <li><%- user.displayName%></li>
+        <ul class="menu dark-background">
+          <li><%- user.displayName %></li>
           <li><a href="/logout">Logout</a></li>
         </ul>
       <% } %>
