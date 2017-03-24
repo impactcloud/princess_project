@@ -19,10 +19,16 @@
               <div class="small-12 columns">
                 <label id="err" class="red"></label>
                 <label>Username
-                  <input id="login-username" type="text" placeholder="user@example.com">
+                  <div class="input-group">
+                    <span class="input-group-label"><i class="fi-mail"></i></span>
+                    <input class="input-group-field" id="login-username" type="text" placeholder="user@example.com">
+                  </div>
                 </label>
                 <label>Password
-                  <input id="login-password" type="password" placeholder="password">
+                  <div class="input-group">
+                    <span class="input-group-label"><i class="fi-lock"></i></span>
+                    <input class="input-group-field" id="login-password" type="password" placeholder="password">
+                  </div>
                 </label>
                 <button id="login-submit" type="submit" class="button">Login</button>
               </div>

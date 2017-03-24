@@ -13,32 +13,38 @@
   <!-- Box preview SDK -->
   <link rel="stylesheet" href="https://cdn01.boxcdn.net/platform/preview/0.106.0/en-US/preview.css">
   <script src="https://cdn01.boxcdn.net/platform/preview/0.106.0/en-US/preview.js"></script>
-  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+  <!-- foundation 6 style + js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+  <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+  <!-- Auth0 js -->
   <script src="https://cdn.auth0.com/js/auth0/8.3.0/auth0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- local css and js -->
   <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="/icons/foundation-icons/foundation-icons.css">
 </head>
 <body>
 
   <!-- Start Top Bar -->
   <div class="top-bar dark-background">
-    <div class="top-bar-left">
-      <ul class="dark-background menu">
-        <li class="menu-text">Industry Portal</li>
-        <li role="menuitem"><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-      </ul>
-    </div>
-    <div class="top-bar-right">
-      <% if(locals.user) { %>
-        <ul class="menu dark-background">
-          <li><%- user.displayName %></li>
-          <li><a href="/logout">Logout</a></li>
+    <div class="row">
+      <div class="top-bar-left">
+        <ul class="dark-background menu separate">
+          <li class="menu-text">Industry Portal</li>
+          <li role="menuitem"><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
         </ul>
-      <% } %>
+      </div>
+      <div class="top-bar-right">
+        <% if(locals.user) { %>
+          <ul class="menu dark-background">
+            <li><%- user.displayName %></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        <% } %>
+      </div>
     </div>
   </div>
   <!-- End Top Bar -->

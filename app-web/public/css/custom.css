@@ -15,3 +15,7 @@
   background-color: #333 !important;
   color: #fff !important;
 }
+
+.menu.separate li:not(:first-child) {
+  border-left: 1px solid #4e4e4e;
+}
