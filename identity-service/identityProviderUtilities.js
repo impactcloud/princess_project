@@ -14,8 +14,8 @@ class IdentityProviderUtilities {
     return profile;
   }
 
-  static checkForExistingBoxAppUserId(profile) {
-    return (profile && profile.app_metadata && profile.app_metadata[BoxOptions.boxAppUserIdFieldName]) ? profile.app_metadata[BoxOptions.boxAppUserIdFieldName] : null;
+  static checkForExistingBoxAppUserId(profile, auth0Field) {
+    return (profile && profile.app_metadata && profile.app_metadata[auth0Field]) ? profile.app_metadata[BoxOptions.boxPersona1AppUserIdFieldName] : null;
   }
 
   static retrieveManagementToken() {

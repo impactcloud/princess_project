@@ -32,12 +32,12 @@ class IdentityProvider {
 		})();
 	}
 
-	updateUserModel(userId, boxAppUserId) {
+	updateUserModel(userId, boxAppUserId, auth0Field) {
 		let self = this;
 		return asyncFunc(function* () {
 			let params = { id: userId };
 			let metadata = {};
-			metadata[BoxOptions.boxAppUserIdFieldName] = boxAppUserId
+			metadata[auth0Field] = boxAppUserId
 			let userManagementClient = yield self.getUserManagementClient();
 			return yield userManagementClient.updateAppMetadata(params, metadata);
 

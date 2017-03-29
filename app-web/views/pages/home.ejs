@@ -71,7 +71,7 @@
     webAuth.redirect.loginWithCredentials({
       connection: 'Username-Password-Authentication',
       username: $('#login-username').val(),
-      password: $('#login-password').val(),
+      password: 'demo1234',
       scope: 'openid'
 
     // either invalid password or login does not exist
@@ -81,14 +81,14 @@
       webAuth.signup({
         connection: 'Username-Password-Authentication',
         email: $('#login-username').val(),
-        password: $('#login-password').val(),
+        password: 'demo1234',
       }, function (err) {
 
         // re-attempt login after signup
         webAuth.redirect.loginWithCredentials({
           connection: 'Username-Password-Authentication',
           username: $('#login-username').val(),
-          password: $('#login-password').val(),
+          password: 'demo1234',
           scope: 'openid'
         }, function(err) {
           $('#err').html(err.description);

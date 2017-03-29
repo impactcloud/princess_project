@@ -10,7 +10,7 @@ let BoxService = require('../../box-service/boxClientService');
  * Main dashboard
 **/
 module.exports.main = asyncFunc(function* (req, res, next) {
-	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
+	let boxAppUserId = req.user.app_metadata[BoxOptions.boxPersona1AppUserIdFieldName];
 	if (!boxAppUserId) {
 		res.redirect('/');
 	}
@@ -37,7 +37,7 @@ module.exports.main = asyncFunc(function* (req, res, next) {
  * Create new folder endpoint
 **/
 module.exports.addFolder = asyncFunc(function* (req, res, next) {
-	let boxAppUserId = req.user.app_metadata[BoxOptions.boxAppUserIdFieldName];
+	let boxAppUserId = req.user.app_metadata[BoxOptions.boxPersona1AppUserIdFieldName];
 	if (!boxAppUserId) {
 		res.redirect('/home');
 	}

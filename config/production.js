@@ -17,7 +17,7 @@ module.exports = {
 	BoxOptions: {
 		inMemoryStoreSize: "100",
 		expiresAtFieldName: "expiresAt",
-		boxAppUserIdFieldName: "box_appuser_id"
+		boxPersona1AppUserIdFieldName: "box_appuser_id"
 	},
 
 	Auth0Config: {
