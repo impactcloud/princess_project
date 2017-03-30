@@ -17,7 +17,6 @@ module.exports = {
 	BoxOptions: {
 		inMemoryStoreSize: "100",
 		expiresAtFieldName: "expiresAt",
-		boxPersona1AppUserIdFieldName: "box_appuser_id",
 		boxPersona1AppUserIdFieldName: "box_persona1_id",
 		boxPersona2AppUserIdFieldName: "box_persona2_id",
 		persona1: "Persona 1",

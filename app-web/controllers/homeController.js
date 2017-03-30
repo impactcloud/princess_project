@@ -41,14 +41,14 @@ module.exports.callback = asyncFunc(function* (req, res, next) {
 
 	if (!boxAppUserIdPersona1) {
 		// create app user for first persona
-		let appUser1 = yield Box.createAppUser(req.user.displayName + BoxOptions.persona1);
+		let appUser1 = yield Box.createAppUser(req.user.displayName + '_' + BoxOptions.persona1);
 		updatedProfile = yield IdentityProvider.updateUserModel(req.user.id, appUser1.id, BoxOptions.boxPersona1AppUserIdFieldName);
 		req.user.app_metadata = updatedProfile.app_metadata;
 	}
 
 	if(!boxAppUserIdPersona2) {
 		// create app user for second persona
-		let appUser2 = yield Box.createAppUser(req.user.displayName + BoxOptions.persona2);
+		let appUser2 = yield Box.createAppUser(req.user.displayName + '_' + BoxOptions.persona2);
 		updatedProfile = yield IdentityProvider.updateUserModel(req.user.id, appUser2.id, BoxOptions.boxPersona2AppUserIdFieldName);
 		req.user.app_metadata = updatedProfile.app_metadata;
 	}

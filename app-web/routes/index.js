@@ -7,6 +7,7 @@ let ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 let indexCtrl = require('../controllers/indexController');
 let homeCtrl = require('../controllers/homeController');
 let dashboardCtrl = require('../controllers/dashboardController');
+
 let filesCtrl = require('../controllers/filesController');
 
 router.get('/', indexCtrl.main);
