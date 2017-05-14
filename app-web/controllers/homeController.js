@@ -1,9 +1,8 @@
 'use strict';
-const Promise = require('bluebird');
-const asyncFunc = Promise.coroutine;
-const config = require('config');
-const BoxOptions = config.get('BoxOptions');
-let Box = require('../../box-service/boxClientService');
+// const Promise = require('bluebird');
+// const asyncFunc = Promise.coroutine;
+// const config = require('config');
+// let Box = require('../../box-service/boxClientService');
 var email = "ccheng@box.com";
 
 /**
