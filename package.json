@@ -21,6 +21,7 @@
     "connect-redis": "^3.2.0",
     "cookie-parser": "^1.4.3",
     "debug": "^2.6.1",
+    "docusign-esign": "3.0.0",
     "ejs": "^2.5.5",
     "express": "^4.14.1",
     "express-jwt": "^5.1.0",

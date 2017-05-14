@@ -7,14 +7,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const SessionCache = require('connect-redis')(session);
-const CacheService = require('./cache-service/cacheService');
 const config = require('config');
 
-const passport = require('passport');
-const strategy = require('./identity-service/passport-strategies/auth0-strategy');
-
-const Auth0Config = config.get('Auth0Config');
 
 let webapp = require('./app-web/routes/index');
 
@@ -31,15 +25,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app-web', 'public')));
-
-app.use(session({
-	secret: Auth0Config.sessionSecret,
-	resave: true,
-	saveUninitialized: true,
-	store: new SessionCache({ client: new CacheService().getCacheClient() })
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use('/', webapp);
 

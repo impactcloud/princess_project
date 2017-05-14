@@ -2,56 +2,48 @@
 const Promise = require('bluebird');
 const asyncFunc = Promise.coroutine;
 const config = require('config');
-const Auth0Config = config.get('Auth0Config');
 const BoxOptions = config.get('BoxOptions');
-
 let Box = require('../../box-service/boxClientService');
-let IdentityProvider = require('../../identity-service/identityProvider');
-let IdentityProviderUtilities = require('../../identity-service/identityProviderUtilities');
-let homeEnv = {
-	AUTH0_CLIENT_ID: Auth0Config.clientId,
-	AUTH0_DOMAIN: Auth0Config.domain,
-	AUTH0_CALLBACK_URL: Auth0Config.callbackUrl || 'http://localhost:3000/callback'
-};
-
+var email = "ccheng@box.com";
 
 /**
  * Render home page
 **/
 module.exports.main = (req, res, next) => {
-	res.render('pages/home', { title: "Industry Portal", env: homeEnv });
+  var hellosign = require('hellosign-sdk')({key: '44780f1c79d0bb275329f9b1c8e6293650220f93fb458ddbfba2f168bbae242c'});
+  var response_url;
+
+  var options = {
+      test_mode : 1,
+      clientId : '0ae85c64ae9da214af7c86d0e6162d98',
+      subject : 'My First embedded signature request',
+      message : 'Awesome, right?',
+      signers : [
+          {
+              email_address : 'carycheng77@gmail.com',
+              name : 'Cary Cheng'
+          }
+      ],
+      file_url : ['https://app.box.com/s/thlku6i5xve5pkuv5l2hednurxs3po36']
+  };
+
+
+  hellosign.signatureRequest.createEmbedded(options)
+      .then(function(response){
+          var signatureId = response.signature_request.signatures[0].signature_id;
+          response_url = hellosign.embedded.getSignUrl(signatureId);
+          return hellosign.embedded.getSignUrl(signatureId);
+      })
+      .then(function(response){
+          console.log('URL = ' + response.embedded.sign_url);
+          response_url = response.embedded.sign_url;
+      })
+      .catch(function(err){
+          //catch error'
+          console.log('Err: ' + err);
+      });
+
+	res.render('pages/home', {
+    sign_url: response_url
+  });
 }
-
-
-/**
- * Logout, kill user session
-**/
-module.exports.logout = (req, res, next) => {
-	req.logout();
-	res.redirect('/home');
-}
-
-/**
- * Handle auth callback
-**/
-module.exports.callback = asyncFunc(function* (req, res, next) {
-	let boxAppUserIdPersona1 = IdentityProviderUtilities.checkForExistingBoxAppUserId(req.user, BoxOptions.boxPersona1AppUserIdFieldName);
-	let boxAppUserIdPersona2 = IdentityProviderUtilities.checkForExistingBoxAppUserId(req.user, BoxOptions.boxPersona2AppUserIdFieldName);
-	let updatedProfile;
-
-	if (!boxAppUserIdPersona1) {
-		// create app user for first persona
-		let appUser1 = yield Box.createAppUser(req.user.displayName + '_' + BoxOptions.persona1);
-		updatedProfile = yield IdentityProvider.updateUserModel(req.user.id, appUser1.id, BoxOptions.boxPersona1AppUserIdFieldName);
-		req.user.app_metadata = updatedProfile.app_metadata;
-	}
-
-	if(!boxAppUserIdPersona2) {
-		// create app user for second persona
-		let appUser2 = yield Box.createAppUser(req.user.displayName + '_' + BoxOptions.persona2);
-		updatedProfile = yield IdentityProvider.updateUserModel(req.user.id, appUser2.id, BoxOptions.boxPersona2AppUserIdFieldName);
-		req.user.app_metadata = updatedProfile.app_metadata;
-	}
-
-	res.redirect('/dashboard');
-})

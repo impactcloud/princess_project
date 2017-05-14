@@ -1,103 +1,12 @@
-<% include ../partials/common/header %>
-
-
-  <div class="callout large home-banner">
-    <div class="row column">
-
-      <div class="medium-7 large-9 columns text-center">
-        <h1>Industry Home Page</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
-        <a href="#" class="button large">Learn More</a>
-        <a href="#" class="button large hollow">Learn Less</a>
-      </div>
-
-      <div class="medium-5 large-3 columns">
-        <div class="callout secondary">
-          <h4 class="text-center primary">Log In</h4>
-          <form>
-            <div class="row">
-              <div class="small-12 columns">
-                <label id="err" class="red"></label>
-                <label>Username
-                  <div class="input-group">
-                    <span class="input-group-label"><i class="fi-mail"></i></span>
-                    <input class="input-group-field" id="login-username" type="text" placeholder="user@example.com">
-                  </div>
-                </label>
-                <label>Password
-                  <div class="input-group">
-                    <span class="input-group-label"><i class="fi-asterisk"></i></span>
-                    <input class="input-group-field" id="login-password" type="password" placeholder="password">
-                  </div>
-                </label>
-                <button id="login-submit" type="submit" class="button expanded">Login</button>
-                <i class="fi-lock"></i>
-                <a href="#">Forgot password?</a>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="row">
-    <div class="medium-6 columns medium-push-6">
-      <img class="thumbnail" src="/img/temp.jpg">
-    </div>
-    <div class="medium-6 columns medium-pull-6">
-      <h2>About Industry Use Case</h2>
-      <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor.</p>
-    </div>
-  </div>
-
+hello
+<script type="text/javascript" src="https://s3.amazonaws.com/cdn.hellosign.com/public/js/hellosign-embedded.LATEST.min.js"></script>
 <script type="text/javascript">
-
-  var webAuth = new auth0.WebAuth({
-    domain:       '<%= env.AUTH0_DOMAIN %>',
-    clientID:     '<%= env.AUTH0_CLIENT_ID %>',
-    redirectUri: '<%= env.AUTH0_CALLBACK_URL %>',
-    responseType: 'code'
-  });
-
-
-  $('#login-submit').click(function (e) {
-
-    e.preventDefault();
-
-    // attempt first login
-    webAuth.redirect.loginWithCredentials({
-      connection: 'Username-Password-Authentication',
-      username: $('#login-username').val(),
-      password: 'demo1234',
-      scope: 'openid'
-
-    // either invalid password or login does not exist
-    }, function (err) {
-
-      // attempt to create new user with credentials
-      webAuth.signup({
-        connection: 'Username-Password-Authentication',
-        email: $('#login-username').val(),
-        password: 'demo1234',
-      }, function (err) {
-
-        // re-attempt login after signup
-        webAuth.redirect.loginWithCredentials({
-          connection: 'Username-Password-Authentication',
-          username: $('#login-username').val(),
-          password: 'demo1234',
-          scope: 'openid'
-        }, function(err) {
-          $('#err').html(err.description);
-        });
-      });
-
+    HelloSign.init('0ae85c64ae9da214af7c86d0e6162d98');
+    HelloSign.open({
+        url: "<%=sign_url%>",
+        allowCancel: true,
+        messageListener: function(eventData) {
+            alert("HelloSign event received");
+        }
     });
-  });
-
 </script>
-
-<% include ../partials/common/footer %>
