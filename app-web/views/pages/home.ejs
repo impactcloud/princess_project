@@ -1,12 +1,25 @@
-hello
-<script type="text/javascript" src="https://s3.amazonaws.com/cdn.hellosign.com/public/js/hellosign-embedded.LATEST.min.js"></script>
-<script type="text/javascript">
-    HelloSign.init('0ae85c64ae9da214af7c86d0e6162d98');
-    HelloSign.open({
-        url: "<%=sign_url%>",
-        allowCancel: true,
-        messageListener: function(eventData) {
-            alert("HelloSign event received");
-        }
-    });
-</script>
+<link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+<body>
+  <div class="wrapper">
+    <a href="/send_to_sign" class="waves-effect waves-light btn lato-font blue">Try Request to Sign</a>
+    <a class="waves-effect waves-light btn lato-font blue">Try Embedded Signing</a>
+  </div>
+</body>
+
+<style>
+  .lato-font{
+    font-family: 'Lato', sans-serif;
+  }
+  .wrapper {
+      text-align: center;
+  }
+
+  .btn {
+      margin-top: 20%;
+  }
+</style>
